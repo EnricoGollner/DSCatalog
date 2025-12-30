@@ -2,6 +2,7 @@ package dev.enricogollner.dscatalog.entities;
 
 import jakarta.persistence.*;
 
+import java.time.Instant;
 import java.util.Objects;
 
 @Entity
@@ -11,6 +12,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private Instant createdAt;
 
     public Category() {
     }
@@ -18,6 +20,7 @@ public class Category {
     public Category(Long id, String name) {
         this.id = id;
         this.name = name;
+        this.createdAt = Instant.now();
     }
 
     public Long getId() {
@@ -34,6 +37,10 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
     }
 
     @Override
